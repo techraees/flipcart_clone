@@ -6,6 +6,7 @@ import { generateSlug } from "../utils/slugifyData.js";
 // Create the product
 export const createProduct = async (req, res) => {
   const { name, price, description, category, quantity, createdBy } = req.body;
+  console.log(req.body,req.files);
   let productPictures = [
     {
       img: "https://images.unsplash.com/photo-1604537529428-15bcbeecfe4d?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -20,7 +21,7 @@ export const createProduct = async (req, res) => {
 
   const product = new Product({
     name: name,
-    slug: generateSlug(20,name),
+    slug: generateSlug(20, name),
     price,
     quantity,
     description,
@@ -30,7 +31,6 @@ export const createProduct = async (req, res) => {
   });
 
   // createdBy: req.user._id,
-
 
   const productSave = await product.save();
   res.status(201).json({ productSave, files: req.files });

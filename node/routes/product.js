@@ -1,11 +1,11 @@
 import express from "express";
 const router = express.Router();
 
-import {
-  requireSignin,
-  adminMiddleware,
-  uploadS3,
-} from "../common-middleware/index.js";
+// import {
+//   requireSignin,
+//   adminMiddleware,
+//   uploadS3,
+// } from "../common-middleware/index.js";
 import {
   createProduct,
   getProductsBySlug,
